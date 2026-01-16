@@ -58,7 +58,16 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6)
     /delete-property/ pinctrl-names;
 };
 
+&i2c0 {
+    status = "disabled";
+    /delete-property/ pinctrl-0;
+    /delete-property/ pinctrl-1;
+    /delete-property/ pinctrl-names;
+};
+
 &pinctrl {
     /delete-node/ uart0_default;
     /delete-node/ uart0_sleep;
+    /delete-node/ i2c0_default;
+    /delete-node/ i2c0_sleep;
 };
