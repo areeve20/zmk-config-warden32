@@ -28,7 +28,6 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6)
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
-
         diode-direction = "col2row";
 
         col-gpios
@@ -51,26 +50,12 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6)
     };
 };
 
-&uart0 {
-    status = "disabled";
-    /delete-property/ pinctrl-0;
-    /delete-property/ pinctrl-1;
-    /delete-property/ pinctrl-names;
-};
-
-&i2c0 {
-    status = "disabled";
-    /delete-property/ pinctrl-0;
-    /delete-property/ pinctrl-1;
-    /delete-property/ pinctrl-names;
-};
-
-&spi1 {
-    status = "disabled";
-    /delete-property/ pinctrl-0;
-    /delete-property/ pinctrl-1;
-    /delete-property/ pinctrl-names;
-};
+/* Hardware Patches to fix "binding-cells" errors */
+&uart0 { status = "disabled"; /delete-property/ pinctrl-0; /delete-property/ pinctrl-1; /delete-property/ pinctrl-names; };
+&i2c0 { status = "disabled"; /delete-property/ pinctrl-0; /delete-property/ pinctrl-1; /delete-property/ pinctrl-names; };
+&spi1 { status = "disabled"; /delete-property/ pinctrl-0; /delete-property/ pinctrl-1; /delete-property/ pinctrl-names; };
+&gpio0 { #binding-cells = <2>; };
+&gpio1 { #binding-cells = <2>; };
 
 &pinctrl {
     /delete-node/ uart0_default;
